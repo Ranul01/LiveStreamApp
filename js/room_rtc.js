@@ -38,6 +38,7 @@ let joinStream = async () => {
                     </div>`
 
     document.getElementById('streams__container').insertAdjacentHTML('beforeend', player)
+    document.getElementById(`user-container-${uid}`).addEventListener('click', expandVideoFrame)
 
     //audio track is stored in [0] and video track in [1]
     localTracks[1].play(`user-${uid}`)
@@ -57,6 +58,7 @@ let handleUserPublished = async (user, mediaType) => {
                     </div>`
 
         document.getElementById('streams__container').insertAdjacentHTML('beforeend', player)
+        document.getElementById(`user-container-${user.uid}`).addEventListener('click', expandVideoFrame)
     }
 
     if (mediaType === 'video') {
