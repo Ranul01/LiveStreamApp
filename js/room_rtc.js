@@ -11,10 +11,15 @@ let client;
 
 const queryString = window.location.search
 const urlParams = new URLSearchParams(queryString)
-let roomID = urlParams.get('roomID')
+let roomID = urlParams.get('room')
 
 if (!roomID) {
     roomID = 'main'
+}
+
+let displayName = sessionStorage.getItem('display_name')
+if (!displayName) {
+    window.location = 'lobby.html'
 }
 
 let localTracks = []
