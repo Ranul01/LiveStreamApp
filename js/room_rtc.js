@@ -9,6 +9,9 @@ if (!uid) {
 let token = null
 let client;
 
+let rtmClient;
+let channel;
+
 const queryString = window.location.search
 const urlParams = new URLSearchParams(queryString)
 let roomID = urlParams.get('room')
@@ -29,6 +32,20 @@ let localScreenTracks;
 let sharingScreen = false
 
 let joinRoomInit = async () => {
+
+    rtmClient = await AgoraRTM.createInstance(APP_ID)
+    await rtmClient.login({ uid, token })
+
+    await rtmClient.addOrUpdateLocalUserAttributes({ 'name': displayName })
+
+    channel = await rtmClient.createChannel(roomID)
+    await channel.join()
+
+    channel.on('MemberJoined', handleMemberJoined)
+    channel.on('MemberLeft', handleMemberLeft)
+
+    getMembers()
+
     client = AgoraRTC.createClient({ mode: 'rtc', codec: 'vp8' })
     await client.join(APP_ID, roomID, token, uid)
 
