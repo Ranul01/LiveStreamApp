@@ -73,4 +73,5 @@ let hideDisplayFrame = () => {
   }
 }
 
+//calling the function
 displayFrame.addEventListener('click', hideDisplayFrame)
