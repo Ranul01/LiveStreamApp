@@ -258,6 +258,7 @@ let leaveSteam = async (e) => {
     channel.sendMessage({ text: JSON.stringify({ 'type': 'user_left', 'uid': uid }) })
 }
 
+//invokin the fucntions
 document.getElementById('camera-btn').addEventListener('click', toggleCamera)
 document.getElementById('mic-btn').addEventListener('click', toggleMic)
 document.getElementById('screen-btn').addEventListener('click', toggleScreen)
