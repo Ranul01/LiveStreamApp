@@ -133,4 +133,5 @@ let leaveChannel = async () => {
 window.addEventListener('beforeunload', leaveChannel)
 
 let messageForm = document.getElementById('message__form')
+//invoking the function
 messageForm.addEventListener('submit', sendMessage)
